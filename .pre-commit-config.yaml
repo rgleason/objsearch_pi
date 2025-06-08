@@ -1,0 +1,54 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: |
+            (?x)^(
+                sqlite.*|
+                wxsqlite.*
+            )$
+      - id: end-of-file-fixer
+        exclude: |
+            (?x)^(
+                sqlite.*|
+                wxsqlite.*|
+                .*svg|
+                .*png
+            )$
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v20.1.5
+    hooks:
+      - id: clang-format
+        exclude: |
+            (?x)^(
+                sqlite.*|
+                wxsqlite.*|
+                .*json|
+                .*yml
+            )$
+  #- repo: https://github.com/cmake-lint/cmake-lint
+  #  rev: 1.4.2
+  #  hooks:
+  #  - id: cmakelint
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+    - id: cmake-format
+  - repo: https://github.com/shssoichiro/oxipng
+    rev: v9.1.5
+    hooks:
+      - id: oxipng
+        exclude: |
+            (?x)^(
+                sqlite.*|
+                wxsqlite.*
+            )$
+  - repo: https://github.com/nohal/mirrors-svgo
+    rev: v3.1.0
+    hooks:
+      - id: svgo
